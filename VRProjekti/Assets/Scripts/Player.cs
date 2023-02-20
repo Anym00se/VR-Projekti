@@ -6,15 +6,9 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     private float rcsForce = 10;
-    private float rcsTorque = 1f;
+    private float rcsTorque = 0.3f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         bool inputMoveUp = Input.GetKey(KeyCode.LeftShift);

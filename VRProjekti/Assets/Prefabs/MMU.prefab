@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4365214488322073072}
   - component: {fileID: 1444310331728609377}
   - component: {fileID: 2977613988728576935}
+  - component: {fileID: 1045691124117356791}
   - component: {fileID: 7356071551250531859}
   m_Layer: 0
   m_Name: MMU
@@ -152,6 +153,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.52, y: 1, z: 0.15}
   m_Center: {x: 0.0000001937151, y: 0.06, z: -0.03}
+--- !u!65 &1045691124117356791
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2852088096273252389}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.78677714, y: 0.27, z: 0.94114465}
+  m_Center: {x: 0.0000001937151, y: 0.056177437, z: 0.36152795}
 --- !u!114 &7356071551250531859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,13 +223,13 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.4
+  m_Intensity: 2
   m_Range: 1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -303,13 +317,13 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 15
+  m_Intensity: 3
+  m_Range: 25
   m_SpotAngle: 45
   m_InnerSpotAngle: 4
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -429,13 +443,13 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 15
+  m_Intensity: 3
+  m_Range: 25
   m_SpotAngle: 45
   m_InnerSpotAngle: 4
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
