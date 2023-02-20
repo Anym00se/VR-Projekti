@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private JoystickHandler leftJoyStick;
     [SerializeField] private JoystickHandler rightJoyStick;
+
+     public InputActionReference yawReference = null;
+     public InputActionReference upInputReference = null;
+     public InputActionReference downInputReference = null;
 
 
     void Update()
@@ -113,8 +119,15 @@ public class Player : MonoBehaviour
         rb.AddForce(transform.forward * rcsForce * rightJoystickRotationsNormalized.x, ForceMode.Force);
         rb.AddForce(transform.right * rcsForce * rightJoystickRotationsNormalized.z, ForceMode.Force);
 
+        float up = upInputReference.action.ReadValue<float>();
+        float down = downInputReference.action.ReadValue<float>();
+        rb.AddForce(transform.up * rcsForce * (up - down), ForceMode.Force);
+
         // Rotation
         rb.AddTorque(transform.right * rcsTorque * leftJoystickRotationsNormalized.x, ForceMode.Force);
         rb.AddTorque(transform.forward * rcsTorque * leftJoystickRotationsNormalized.z, ForceMode.Force);
+
+        float yaw = yawReference.action.ReadValue<float>();
+        rb.AddTorque(transform.up * rcsTorque * yaw, ForceMode.Force);
     }
 }

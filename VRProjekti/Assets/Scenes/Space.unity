@@ -2218,9 +2218,27 @@ PrefabInstance:
       objectReference: {fileID: 712774066}
     - target: {fileID: 7356071551250531859, guid: e8d96c6ba5223694c9176925af596b1c,
         type: 3}
+      propertyPath: yawReference
+      value: 
+      objectReference: {fileID: -1412219967606881822, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
+    - target: {fileID: 7356071551250531859, guid: e8d96c6ba5223694c9176925af596b1c,
+        type: 3}
       propertyPath: rightJoyStick
       value: 
       objectReference: {fileID: 1617646562}
+    - target: {fileID: 7356071551250531859, guid: e8d96c6ba5223694c9176925af596b1c,
+        type: 3}
+      propertyPath: upInputReference
+      value: 
+      objectReference: {fileID: -7374445832925681552, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
+    - target: {fileID: 7356071551250531859, guid: e8d96c6ba5223694c9176925af596b1c,
+        type: 3}
+      propertyPath: downInputReference
+      value: 
+      objectReference: {fileID: -6333912965832038549, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
     - target: {fileID: 7850242952236481338, guid: e8d96c6ba5223694c9176925af596b1c,
         type: 3}
       propertyPath: hand
