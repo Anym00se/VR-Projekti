@@ -17,16 +17,20 @@ public class Player : MonoBehaviour
      public InputActionReference upInputReference = null;
      public InputActionReference downInputReference = null;
 
+     public InputActionReference leftHandPressedReference = null;
+     public InputActionReference rightHandPressedReference = null;
+
 
     void Update()
     {
-        // ApplyKeyboardInput();
-
         // VR input
         // ========
 
         Vector3 leftJoystickRotations = leftJoyStick.GetRotations();
         Vector3 rightJoystickRotations = rightJoyStick.GetRotations();
+
+        bool leftHandTouchingJoystick = leftJoyStick.followHand;
+        bool rightHandTouchingJoystick = rightJoyStick.followHand;
 
         Vector3 leftJoystickRotationsNormalized = new Vector3(
             leftJoystickRotations.x / 90f,
@@ -40,19 +44,25 @@ public class Player : MonoBehaviour
         ); 
 
         // Translation
-        rb.AddForce(transform.forward * rcsForce * rightJoystickRotationsNormalized.x, ForceMode.Force);
-        rb.AddForce(transform.right * rcsForce * rightJoystickRotationsNormalized.z, ForceMode.Force);
+        if (rightHandTouchingJoystick)
+        {
+            rb.AddForce(transform.forward * rcsForce * rightJoystickRotationsNormalized.x, ForceMode.Force);
+            rb.AddForce(transform.right * rcsForce * rightJoystickRotationsNormalized.z, ForceMode.Force);
 
-        float up = upInputReference.action.ReadValue<float>();
-        float down = downInputReference.action.ReadValue<float>();
-        rb.AddForce(transform.up * rcsForce * (up - down), ForceMode.Force);
+            float up = upInputReference.action.ReadValue<float>();
+            float down = downInputReference.action.ReadValue<float>();
+            rb.AddForce(transform.up * rcsForce * (up - down), ForceMode.Force);
+        }
 
         // Rotation
-        rb.AddTorque(transform.right * rcsTorque * leftJoystickRotationsNormalized.x, ForceMode.Force);
-        rb.AddTorque(transform.forward * rcsTorque * leftJoystickRotationsNormalized.z, ForceMode.Force);
+        if (leftHandTouchingJoystick)
+        {
+            rb.AddTorque(transform.right * rcsTorque * leftJoystickRotationsNormalized.x, ForceMode.Force);
+            rb.AddTorque(transform.forward * rcsTorque * leftJoystickRotationsNormalized.z, ForceMode.Force);
 
-        float yaw = yawReference.action.ReadValue<float>();
-        rb.AddTorque(transform.up * rcsTorque * yaw, ForceMode.Force);
+            float yaw = yawReference.action.ReadValue<float>();
+            rb.AddTorque(transform.up * rcsTorque * yaw, ForceMode.Force);
+        }
     }
 
     private void ApplyKeyboardInput()

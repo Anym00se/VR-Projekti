@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8768799703104727871}
+  - component: {fileID: 3938559978758363674}
+  - component: {fileID: 3079049884163148507}
   m_Layer: 0
   m_Name: Joystick_Left
   m_TagString: Untagged
@@ -32,6 +34,33 @@ Transform:
   m_Father: {fileID: 5760394675659808527}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3938559978758363674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953093577887929435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33b90cd7c6d07842ab237e50cbde7eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 0}
+  rotationReference: {fileID: 0}
+--- !u!135 &3079049884163148507
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953093577887929435}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0.1}
 --- !u!1 &2852088096273252389
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,9 +210,16 @@ MonoBehaviour:
   rb: {fileID: 1444310331728609377}
   leftJoyStick: {fileID: 0}
   rightJoyStick: {fileID: 0}
-  yawReference: {fileID: 0}
-  upInputReference: {fileID: 0}
-  downInputReference: {fileID: 0}
+  yawReference: {fileID: -1412219967606881822, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  upInputReference: {fileID: -7374445832925681552, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  downInputReference: {fileID: -6333912965832038549, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  leftHandPressedReference: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  rightHandPressedReference: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
 --- !u!1 &4786292200952272136
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +417,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2295032428752849342}
+  - component: {fileID: 7328949652450521896}
+  - component: {fileID: 3914388406328400541}
   m_Layer: 0
   m_Name: Joystick_Right
   m_TagString: Untagged
@@ -404,6 +442,33 @@ Transform:
   m_Father: {fileID: 5312321141584133379}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7328949652450521896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6010092811192044334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33b90cd7c6d07842ab237e50cbde7eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 0}
+  rotationReference: {fileID: 0}
+--- !u!135 &3914388406328400541
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6010092811192044334}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0.1}
 --- !u!1 &6946298342760899033
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,27 +696,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d570069bfb7c7847a14af1788adee16, type: 3}
---- !u!1 &2581836209101319955 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d570069bfb7c7847a14af1788adee16,
-    type: 3}
-  m_PrefabInstance: {fileID: 3392881277722202690}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8702300798419498012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2581836209101319955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e33b90cd7c6d07842ab237e50cbde7eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hand: {fileID: 0}
-  rotationReference: {fileID: 0}
-  triggerReference: {fileID: 0}
 --- !u!4 &2927153900681819561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4d570069bfb7c7847a14af1788adee16,
@@ -733,24 +777,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4031266715118089223}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4265056636432091478 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d570069bfb7c7847a14af1788adee16,
-    type: 3}
-  m_PrefabInstance: {fileID: 4031266715118089223}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7850242952236481338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4265056636432091478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e33b90cd7c6d07842ab237e50cbde7eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hand: {fileID: 0}
-  rotationReference: {fileID: 0}
-  triggerReference: {fileID: 0}

@@ -8,20 +8,22 @@ public class JoystickHandler : MonoBehaviour
 {
     [SerializeField] private Transform hand;
     public InputActionReference rotationReference = null;
-    public InputActionReference triggerReference = null;
+
+    public bool followHand = false;
 
 
     void Update()
     {
-        transform.LookAt(hand.position);
+        if (followHand)
+        {
+            transform.LookAt(hand.position);
 
-        transform.localRotation = Quaternion.Euler(
-            transform.localRotation.eulerAngles.x,
-            transform.localRotation.eulerAngles.y,
-            // Mathf.Clamp(transform.localRotation.eulerAngles.x, -45f, 45f),
-            // Mathf.Clamp(transform.localRotation.eulerAngles.y, -45f, 45f),
-            0f
-        );
+            transform.localRotation = Quaternion.Euler(
+                transform.localRotation.eulerAngles.x,
+                transform.localRotation.eulerAngles.y,
+                0f
+            );
+        }
     }
 
     public Vector3 GetRotations()
@@ -31,5 +33,21 @@ public class JoystickHandler : MonoBehaviour
             transform.localRotation.eulerAngles.y,
             transform.localRotation.eulerAngles.z
         );
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.CompareTag("VRController"))
+        {
+            followHand = true;
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.CompareTag("VRController"))
+        {
+            followHand = false;
+        }
     }
 }

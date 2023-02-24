@@ -1568,7 +1568,7 @@
                     "name": "Yaw",
                     "type": "Value",
                     "id": "b7bf1e71-70fa-4d6d-9c1c-5de354e4fb10",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -1578,7 +1578,7 @@
                 {
                     "name": "",
                     "id": "498efa06-e109-4714-8dd2-ee416a13a330",
-                    "path": "<XRController>{RightHand}/primaryButton",
+                    "path": "<XRController>{RightHand}/primary",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1600,7 +1600,7 @@
                 {
                     "name": "",
                     "id": "ae0f11be-f621-41dd-8cf0-95aba6d71703",
-                    "path": "<XRController>{LeftHand}/primary2DAxisClick",
+                    "path": "<XRController>{RightHand}/grip",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
