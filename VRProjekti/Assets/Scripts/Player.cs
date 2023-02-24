@@ -20,9 +20,43 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // Keyboard input
-        // ==============
+        // ApplyKeyboardInput();
 
+        // VR input
+        // ========
+
+        Vector3 leftJoystickRotations = leftJoyStick.GetRotations();
+        Vector3 rightJoystickRotations = rightJoyStick.GetRotations();
+
+        Vector3 leftJoystickRotationsNormalized = new Vector3(
+            leftJoystickRotations.x / 90f,
+            leftJoystickRotations.y / 90f,
+            leftJoystickRotations.z / 90f
+        );
+        Vector3 rightJoystickRotationsNormalized = new Vector3(
+            rightJoystickRotations.x / 90f,
+            rightJoystickRotations.y / 90f,
+            rightJoystickRotations.z / 90f
+        ); 
+
+        // Translation
+        rb.AddForce(transform.forward * rcsForce * rightJoystickRotationsNormalized.x, ForceMode.Force);
+        rb.AddForce(transform.right * rcsForce * rightJoystickRotationsNormalized.z, ForceMode.Force);
+
+        float up = upInputReference.action.ReadValue<float>();
+        float down = downInputReference.action.ReadValue<float>();
+        rb.AddForce(transform.up * rcsForce * (up - down), ForceMode.Force);
+
+        // Rotation
+        rb.AddTorque(transform.right * rcsTorque * leftJoystickRotationsNormalized.x, ForceMode.Force);
+        rb.AddTorque(transform.forward * rcsTorque * leftJoystickRotationsNormalized.z, ForceMode.Force);
+
+        float yaw = yawReference.action.ReadValue<float>();
+        rb.AddTorque(transform.up * rcsTorque * yaw, ForceMode.Force);
+    }
+
+    private void ApplyKeyboardInput()
+    {
         bool inputMoveUp = Input.GetKey(KeyCode.LeftShift);
         bool inputMoveDown = Input.GetKey(KeyCode.LeftControl);
 
@@ -39,7 +73,6 @@ public class Player : MonoBehaviour
 
         bool inputRollLeft = Input.GetKey(KeyCode.Z);
         bool inputRollRight = Input.GetKey(KeyCode.C);
-
 
         // Translation
         if (inputMoveUp)
@@ -96,38 +129,5 @@ public class Player : MonoBehaviour
         {
             rb.AddTorque(transform.forward * -rcsTorque, ForceMode.Force);
         }
-
-
-        // VR input
-        // ========
-
-        Vector3 leftJoystickRotations = leftJoyStick.GetRotations();
-        Vector3 rightJoystickRotations = rightJoyStick.GetRotations();
-
-        Vector3 leftJoystickRotationsNormalized = new Vector3(
-            leftJoystickRotations.x / 90f,
-            leftJoystickRotations.y / 90f,
-            leftJoystickRotations.z / 90f
-        );
-        Vector3 rightJoystickRotationsNormalized = new Vector3(
-            rightJoystickRotations.x / 90f,
-            rightJoystickRotations.y / 90f,
-            rightJoystickRotations.z / 90f
-        ); 
-
-        // Translation
-        rb.AddForce(transform.forward * rcsForce * rightJoystickRotationsNormalized.x, ForceMode.Force);
-        rb.AddForce(transform.right * rcsForce * rightJoystickRotationsNormalized.z, ForceMode.Force);
-
-        float up = upInputReference.action.ReadValue<float>();
-        float down = downInputReference.action.ReadValue<float>();
-        rb.AddForce(transform.up * rcsForce * (up - down), ForceMode.Force);
-
-        // Rotation
-        rb.AddTorque(transform.right * rcsTorque * leftJoystickRotationsNormalized.x, ForceMode.Force);
-        rb.AddTorque(transform.forward * rcsTorque * leftJoystickRotationsNormalized.z, ForceMode.Force);
-
-        float yaw = yawReference.action.ReadValue<float>();
-        rb.AddTorque(transform.up * rcsTorque * yaw, ForceMode.Force);
     }
 }
