@@ -133,8 +133,8 @@ Rigidbody:
   m_GameObject: {fileID: 2852088096273252389}
   serializedVersion: 2
   m_Mass: 100
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 0.2
+  m_AngularDrag: 0.1
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -181,6 +181,9 @@ MonoBehaviour:
   rb: {fileID: 1444310331728609377}
   leftJoyStick: {fileID: 0}
   rightJoyStick: {fileID: 0}
+  yawReference: {fileID: 0}
+  upInputReference: {fileID: 0}
+  downInputReference: {fileID: 0}
 --- !u!1 &4786292200952272136
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 0}
   rotationReference: {fileID: 0}
+  triggerReference: {fileID: 0}
 --- !u!4 &2927153900681819561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4d570069bfb7c7847a14af1788adee16,
@@ -749,3 +753,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 0}
   rotationReference: {fileID: 0}
+  triggerReference: {fileID: 0}
