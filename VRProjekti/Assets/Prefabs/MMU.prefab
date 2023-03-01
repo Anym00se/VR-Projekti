@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953093577887929435}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -46,8 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33b90cd7c6d07842ab237e50cbde7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRight: 0
   hand: {fileID: 0}
   rotationReference: {fileID: 0}
+  followHand: 0
+  pitchTr: {fileID: 0}
+  rollTr: {fileID: 0}
 --- !u!135 &3079049884163148507
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -433,7 +437,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6010092811192044334}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.009204955, y: 0.0043887817, z: 0.006577455, w: 0.9999264}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -454,8 +458,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33b90cd7c6d07842ab237e50cbde7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRight: 1
   hand: {fileID: 0}
   rotationReference: {fileID: 0}
+  followHand: 0
+  pitchTr: {fileID: 0}
+  rollTr: {fileID: 0}
 --- !u!135 &3914388406328400541
 SphereCollider:
   m_ObjectHideFlags: 0
