@@ -8,12 +8,10 @@ public class JoystickHandler : MonoBehaviour
 {
     [SerializeField] private bool isRight = false; // true = is right joystic, false = is left joystick
     [SerializeField] private Transform hand;
-    public InputActionReference rotationReference = null;
+    [SerializeField] private Transform knob;
+    [SerializeField] private Transform MMU;
 
     public bool followHand = false;
-
-    [SerializeField] private Transform pitchTr;
-    [SerializeField] private Transform rollTr;
 
 
     void Update()
@@ -27,16 +25,13 @@ public class JoystickHandler : MonoBehaviour
     public Vector2 GetJoystickInput()
     {
         float inputForward = Vector3.Project(
-            hand.position - transform.position,
-            transform.right
-        ).magnitude;
+            knob.position - transform.position,
+            MMU.forward
+        ).x * 10f;
         float inputRight = Vector3.Project(
-            hand.position - transform.position,
-            transform.up
-        ).magnitude;
-
-        // DEBUG
-        if (isRight) { Debug.Log("forward :" + inputForward + ", right: " + inputRight); }
+            knob.position - transform.position,
+            MMU.right
+        ).z * -10f;
 
         if (followHand)
         {

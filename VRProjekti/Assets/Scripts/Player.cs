@@ -7,8 +7,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
-    private float rcsForce = 10;
-    private float rcsTorque = 0.3f;
+    private float rcsForce = 100;
+    private float rcsTorque = 3f;
 
     [SerializeField] private JoystickHandler leftJoyStick;
     [SerializeField] private JoystickHandler rightJoyStick;
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         if (leftJoyStick.followHand)
         {
             rb.AddTorque(transform.right * rcsTorque * leftJoyStick.GetJoystickInput().x, ForceMode.Force);
-            rb.AddTorque(transform.forward * rcsTorque * leftJoyStick.GetJoystickInput().y, ForceMode.Force);
+            rb.AddTorque(transform.forward * rcsTorque * -leftJoyStick.GetJoystickInput().y, ForceMode.Force);
 
             float yaw = yawReference.action.ReadValue<float>();
             rb.AddTorque(transform.up * rcsTorque * yaw, ForceMode.Force);
