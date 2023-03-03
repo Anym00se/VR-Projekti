@@ -17,7 +17,7 @@ public class CubeHolder : MonoBehaviour
         }
     }
 
-    void SpawnCube()
+    public void SpawnCube()
     {
         Instantiate(StackCube_Prefab, spawnTransform.position, GetRandomRotation());
     }

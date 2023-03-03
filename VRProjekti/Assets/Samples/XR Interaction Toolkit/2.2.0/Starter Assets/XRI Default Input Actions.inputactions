@@ -1609,6 +1609,74 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "TowerActions",
+            "id": "b63f8e79-ce09-46e8-847c-6cf766068bad",
+            "actions": [
+                {
+                    "name": "SpawnCube",
+                    "type": "Button",
+                    "id": "8c8858e3-bfbc-4b85-ba81-4f1f135f4c8d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LiftUp",
+                    "type": "Button",
+                    "id": "a61cb11c-295a-49ba-b0e1-9e44a39b479f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LiftDown",
+                    "type": "Button",
+                    "id": "42092cf8-4f0f-4e17-b1df-971f30d59202",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "64032e96-0bcb-49f2-bd06-4aa73efc51d8",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpawnCube",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5b8336f6-01b3-432b-84fb-c388053a5c20",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LiftUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8b100e9b-8b73-4dc8-8e11-fcbbaed7b865",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LiftDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
