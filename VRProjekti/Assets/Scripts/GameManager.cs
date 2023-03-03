@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     private float tehLineRaiseSpeed = 0.01f;
     private float reachTehLineTimerDefault = 10f;
     private float reachTehLineTimer;
+    private Image warningImage;
 
     // For anyone reading this:
     // "Teh Line" means "the line" but is a reference to Mubbly Tower.
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
     {
         tehLine = GameObject.FindGameObjectWithTag("TehLine").transform;
         reachTehLineTimer = reachTehLineTimerDefault;
+        warningImage = GameObject.FindGameObjectWithTag("WarningImage").GetComponent<Image>();
     }
 
     void Update()
@@ -61,6 +64,8 @@ public class GameManager : MonoBehaviour
                 reachTehLineTimer -= Time.deltaTime;
                 Debug.Log("Teh Line not reached!");
             }
+
+            UpdateWarningFillAmount();
         }
     }
 
@@ -108,5 +113,10 @@ public class GameManager : MonoBehaviour
     void GameEnd()
     {
         Debug.Log("Teh Line not reached in time.\nGame ended.");
+    }
+
+    void UpdateWarningFillAmount()
+    {
+        warningImage.fillAmount = 1 - (reachTehLineTimer / reachTehLineTimerDefault);
     }
 }
