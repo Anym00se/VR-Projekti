@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private CubeHolder cubeSpawner;
     private Lift lift;
     private float movementSpeed = 1f;
+    [SerializeField] private Transform playerDirectionTransform;
 
 
     void Awake()
@@ -51,21 +52,27 @@ public class Player : MonoBehaviour
         // Movement
         // ========
 
+        playerDirectionTransform.rotation = Quaternion.Euler(
+            0f,
+            playerDirectionTransform.rotation.eulerAngles.y,
+            0f
+        );
+
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(transform.forward * movementSpeed * Time.deltaTime);
+            transform.Translate(playerDirectionTransform.forward * movementSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(-transform.forward * movementSpeed * Time.deltaTime);
+            transform.Translate(-playerDirectionTransform.forward * movementSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(transform.right * movementSpeed * Time.deltaTime);
+            transform.Translate(playerDirectionTransform.right * movementSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(-transform.right * movementSpeed * Time.deltaTime);
+            transform.Translate(-playerDirectionTransform.right * movementSpeed * Time.deltaTime);
         }
     }
 
