@@ -20,12 +20,12 @@ public class Lift : MonoBehaviour
         }
     }
 
-    void RaiseLift()
+    public void RaiseLift()
     {
         transform.position += Vector3.up * liftMovementSpeed * Time.deltaTime;
     }
 
-    void LowerLift()
+    public void LowerLift()
     {
         transform.position -= Vector3.up * liftMovementSpeed * Time.deltaTime;
 
