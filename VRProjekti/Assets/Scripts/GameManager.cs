@@ -8,7 +8,12 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> stackCubes;
     private Transform tehLine;
-    private float tehLineRaiseSpeed = 0.0001f; 
+    private float tehLineRaiseSpeed = 0.00005f;
+    private float reachTehLineTimerDefault = 10f;
+    private float reachTehLineTimer;
+
+    // For anyone reading this:
+    // "Teh Line" means "the line" but is a reference to Mubbly Tower.
 
 
     private void Awake()
@@ -29,18 +34,33 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         tehLine = GameObject.FindGameObjectWithTag("TehLine").transform;
+        reachTehLineTimer = reachTehLineTimerDefault;
     }
 
     void Update()
     {
-        if (IsTehLineReached())
+        // Case: Game End
+        if (reachTehLineTimer <= 0)
         {
-            tehLine.position += Vector3.up * tehLineRaiseSpeed;
-            Debug.Log("Raising Teh Line!");
+            reachTehLineTimer = 0f;
+            GameEnd();
         }
+        // Case: Game Ongoing
         else
         {
-            Debug.Log("Teh Line not reached!");
+            // Raise Teh Line if reached
+            if (IsTehLineReached())
+            {
+                tehLine.position += Vector3.up * tehLineRaiseSpeed;
+                reachTehLineTimer = reachTehLineTimerDefault;
+                Debug.Log("Raising Teh Line!");
+            }
+            // Reduce timer if Teh Line not reached
+            else
+            {
+                reachTehLineTimer -= Time.deltaTime;
+                Debug.Log("Teh Line not reached!");
+            }
         }
     }
 
@@ -83,5 +103,10 @@ public class GameManager : MonoBehaviour
     bool IsCubeBeingInteracted(GameObject cube)
     {
         return false;
+    }
+
+    void GameEnd()
+    {
+        Debug.Log("Teh Line not reached in time.\nGame ended.");
     }
 }
