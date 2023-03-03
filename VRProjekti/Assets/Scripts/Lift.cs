@@ -10,11 +10,11 @@ public class Lift : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.R))
         {
             RaiseLift();
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.F))
         {
             LowerLift();
         }

@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public InputActionReference lowerLiftReference = null;
     private CubeHolder cubeSpawner;
     private Lift lift;
+    private float movementSpeed = 1f;
 
 
     void Awake()
@@ -30,6 +31,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+
+        // Lift
+        // ====
+
         float raiseValue = raiseLiftReference.action.ReadValue<float>();
         float lowerValue = lowerLiftReference.action.ReadValue<float>();
 
@@ -41,6 +46,26 @@ public class Player : MonoBehaviour
         if (lowerValue != 0)
         {
             lift.LowerLift(lowerValue);
+        }
+
+        // Movement
+        // ========
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(transform.forward * movementSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(-transform.forward * movementSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(transform.right * movementSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(-transform.right * movementSpeed * Time.deltaTime);
         }
     }
 
