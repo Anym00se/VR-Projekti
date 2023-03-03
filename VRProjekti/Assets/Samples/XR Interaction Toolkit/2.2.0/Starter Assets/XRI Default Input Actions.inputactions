@@ -1625,21 +1625,21 @@
                 },
                 {
                     "name": "LiftUp",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "a61cb11c-295a-49ba-b0e1-9e44a39b479f",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "LiftDown",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "42092cf8-4f0f-4e17-b1df-971f30d59202",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -1657,7 +1657,7 @@
                 {
                     "name": "",
                     "id": "5b8336f6-01b3-432b-84fb-c388053a5c20",
-                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "path": "<XRController>{LeftHand}/trigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1668,7 +1668,7 @@
                 {
                     "name": "",
                     "id": "8b100e9b-8b73-4dc8-8e11-fcbbaed7b865",
-                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "path": "<XRController>{LeftHand}/grip",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -20,14 +20,16 @@ public class Lift : MonoBehaviour
         }
     }
 
-    public void RaiseLift()
+    public void RaiseLift(float speed = 0f)
     {
-        transform.position += Vector3.up * liftMovementSpeed * Time.deltaTime;
+        if (speed == 0) { speed = liftMovementSpeed; }
+        transform.position += Vector3.up * speed * Time.deltaTime;
     }
 
-    public void LowerLift()
+    public void LowerLift(float speed = 0f)
     {
-        transform.position -= Vector3.up * liftMovementSpeed * Time.deltaTime;
+        if (speed == 0) { speed = liftMovementSpeed; }
+        transform.position -= Vector3.up * speed * Time.deltaTime;
 
         // Limit lift y position
         if (transform.position.y <= -0.49)

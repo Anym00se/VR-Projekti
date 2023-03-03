@@ -15,15 +15,11 @@ public class Player : MonoBehaviour
     void Awake()
     {
         spawnCubeReference.action.started += SpawnCube;
-        raiseLiftReference.action.started += RaiseLift;
-        lowerLiftReference.action.started += LowerLift;
     }
 
     void OnDestroy()
     {
         spawnCubeReference.action.started -= SpawnCube;
-        raiseLiftReference.action.started -= RaiseLift;
-        lowerLiftReference.action.started -= LowerLift;
     }
 
     void Start()
@@ -32,18 +28,24 @@ public class Player : MonoBehaviour
         lift = GameObject.FindGameObjectWithTag("Lift").GetComponent<Lift>();
     }
 
+    void Update()
+    {
+        float raiseValue = raiseLiftReference.action.ReadValue<float>();
+        float lowerValue = lowerLiftReference.action.ReadValue<float>();
+
+        if (raiseValue != 0)
+        {
+            lift.RaiseLift(raiseValue);
+        }
+
+        if (lowerValue != 0)
+        {
+            lift.LowerLift(lowerValue);
+        }
+    }
+
     void SpawnCube(InputAction.CallbackContext context)
     {
         cubeSpawner.SpawnCube();
-    }
-
-    void RaiseLift(InputAction.CallbackContext context)
-    {
-        lift.RaiseLift();
-    }
-
-    void LowerLift(InputAction.CallbackContext context)
-    {
-        lift.LowerLift();
     }
 }
