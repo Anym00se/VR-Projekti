@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public InputActionReference spawnCubeReference = null;
     public InputActionReference raiseLiftReference = null;
     public InputActionReference lowerLiftReference = null;
+    public InputActionReference moveReference = null;
     private CubeHolder cubeSpawner;
     private Lift lift;
     private float movementSpeed = 1f;
@@ -58,6 +59,12 @@ public class Player : MonoBehaviour
             0f
         );
 
+        // VR input
+        Vector2 movementVector = moveReference.action.ReadValue<Vector2>();
+        transform.Translate(playerDirectionTransform.forward * movementVector.y * movementSpeed * Time.deltaTime);
+        transform.Translate(playerDirectionTransform.right * movementVector.x * movementSpeed * Time.deltaTime);
+
+        // Keyboard input
         if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(playerDirectionTransform.forward * movementSpeed * Time.deltaTime);
