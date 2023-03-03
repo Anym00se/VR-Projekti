@@ -10,6 +10,7 @@ TagManager:
   - TehLine
   - Lift
   - GameManager
+  - Button
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - TehLine
   - Lift
   - Player
-  - 
+  - Button
   - 
   - 
   - 
