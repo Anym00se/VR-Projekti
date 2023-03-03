@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> stackCubes;
     private Transform tehLine;
-    private float tehLineRaiseSpeed = 0.00005f;
+    private float tehLineRaiseSpeed = 0.01f;
     private float reachTehLineTimerDefault = 10f;
     private float reachTehLineTimer;
 
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
             // Raise Teh Line if reached
             if (IsTehLineReached())
             {
-                tehLine.position += Vector3.up * tehLineRaiseSpeed;
+                tehLine.position += Vector3.up * tehLineRaiseSpeed * Time.deltaTime;
                 reachTehLineTimer = reachTehLineTimerDefault;
                 Debug.Log("Raising Teh Line!");
             }
