@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 542551030301640349}
   - component: {fileID: 4491237532038622005}
   - component: {fileID: 3098270395910501215}
+  - component: {fileID: 1225564971288791353}
   m_Layer: 6
   m_Name: StackCube
   m_TagString: StackCube
@@ -240,3 +241,15 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &1225564971288791353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542551030301640348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730a9c2f5c5337d42a294612a2154517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

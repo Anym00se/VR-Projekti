@@ -7,6 +7,9 @@ TagManager:
   - VRController
   - StackCube
   - CubeHolder
+  - TehLine
+  - Lift
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -16,8 +19,8 @@ TagManager:
   - UI
   - StackCube
   - CubeHolder
-  - 
-  - 
+  - TehLine
+  - Lift
   - 
   - 
   - 
