@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class StackCube : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool isBeingGrabbed = false;
+
+
     void Start()
     {
         GameManager.instance.stackCubes.Add(gameObject);
@@ -13,5 +15,15 @@ public class StackCube : MonoBehaviour
     void OnDestroy()
     {
         GameManager.instance.stackCubes.Remove(gameObject);
+    }
+
+    public void SetBeingGrabbed()
+    {
+        isBeingGrabbed = true;
+    }
+
+    public void UnSetBeingGrabbed()
+    {
+        isBeingGrabbed = false;
     }
 }

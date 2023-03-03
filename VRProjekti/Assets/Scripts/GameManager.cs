@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private float reachTehLineTimerDefault = 10f;
     private float reachTehLineTimer;
     private Image warningImage;
+    private bool gameEnded = false;
 
     // For anyone reading this:
     // "Teh Line" means "the line" but is a reference to Mubbly Tower.
@@ -46,7 +47,11 @@ public class GameManager : MonoBehaviour
         if (reachTehLineTimer <= 0)
         {
             reachTehLineTimer = 0f;
-            GameEnd();
+
+            if (!gameEnded)
+            {
+                GameEnd();
+            }
         }
         // Case: Game Ongoing
         else
@@ -56,13 +61,11 @@ public class GameManager : MonoBehaviour
             {
                 tehLine.position += Vector3.up * tehLineRaiseSpeed * Time.deltaTime;
                 reachTehLineTimer = reachTehLineTimerDefault;
-                Debug.Log("Raising Teh Line!");
             }
             // Reduce timer if Teh Line not reached
             else
             {
                 reachTehLineTimer -= Time.deltaTime;
-                Debug.Log("Teh Line not reached!");
             }
 
             UpdateWarningFillAmount();
@@ -107,11 +110,12 @@ public class GameManager : MonoBehaviour
 
     bool IsCubeBeingInteracted(GameObject cube)
     {
-        return false;
+        return cube.GetComponent<StackCube>().isBeingGrabbed;
     }
 
     void GameEnd()
     {
+        gameEnded = true;
         Debug.Log("Teh Line not reached in time.\nGame ended.");
     }
 
