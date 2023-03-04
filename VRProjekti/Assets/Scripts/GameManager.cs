@@ -204,5 +204,13 @@ public class GameManager : MonoBehaviour
 
         // Spawn one initial StackCube
         GameObject.FindGameObjectWithTag("CubeHolder").GetComponent<CubeHolder>().SpawnCube(true);
+
+        // Reset lift height
+        Transform lift = GameObject.FindGameObjectWithTag("Lift").transform;
+        lift.position = new Vector3(
+                lift.transform.position.x,
+                -0.49f,
+                lift.transform.position.z
+            );
     }
 }
