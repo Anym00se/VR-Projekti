@@ -14,6 +14,7 @@ TagManager:
   - WarningImage
   - ScoreText
   - TimerBar
+  - GameEndText
   layers:
   - Default
   - TransparentFX

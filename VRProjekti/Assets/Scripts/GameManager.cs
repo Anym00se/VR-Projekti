@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -17,6 +15,7 @@ public class GameManager : MonoBehaviour
     private GameObject warningImage;
     private TMP_Text scoreText;
     private Transform timerBar;
+    private GameObject gameEndText;
     private bool gameEnded = false;
     public Material validMaterial;
     public Material invalidMaterial;
@@ -45,10 +44,15 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        score = 0;
         tehLine = GameObject.FindGameObjectWithTag("TehLine").transform;
         warningImage = GameObject.FindGameObjectWithTag("WarningImage");
         scoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TMP_Text>();
         timerBar = GameObject.FindGameObjectWithTag("TimerBar").transform;
+        gameEndText = GameObject.FindGameObjectWithTag("GameEndText");
+        HideGameEndText();
+        HideWarning();
+
         reachTehLineTimer = reachTehLineTimerDefault;
         tehLineStartHeight = tehLine.position.y;
     }
@@ -93,7 +97,7 @@ public class GameManager : MonoBehaviour
         // Restart game if pressed "Home"
         if (Input.GetKeyDown(KeyCode.Home))
         {
-            SceneManager.LoadScene("TowerScene");
+            RestartGame();
         }
     }
 
@@ -141,6 +145,8 @@ public class GameManager : MonoBehaviour
     void GameEnd()
     {
         gameEnded = true;
+        HideWarning();
+        ShowGameEndText();
         Debug.Log("Teh Line not reached in time.\nGame ended.");
     }
 
@@ -171,5 +177,32 @@ public class GameManager : MonoBehaviour
             1f,
             1f
         );
+    }
+
+    void ShowGameEndText()
+    {
+        gameEndText.SetActive(true);
+    }
+
+    void HideGameEndText()
+    {
+        gameEndText.SetActive(false);
+    }
+
+    void RestartGame()
+    {
+        score = 0;
+        gameEnded = false;
+        tehLine.transform.position = Vector3.up * tehLineStartHeight;
+        reachTehLineTimer = reachTehLineTimerDefault;
+
+        // Destroy all StackCubes 
+        foreach(GameObject cube in stackCubes)
+        {
+            Destroy(cube);
+        }
+
+        // Spawn one initial StackCube
+        GameObject.FindGameObjectWithTag("CubeHolder").GetComponent<CubeHolder>().SpawnCube(true);
     }
 }

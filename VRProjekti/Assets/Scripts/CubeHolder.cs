@@ -17,9 +17,10 @@ public class CubeHolder : MonoBehaviour
         }
     }
 
-    public void SpawnCube()
+    public void SpawnCube(bool spawnAtOrigin = false)
     {
-        Instantiate(StackCube_Prefab, spawnTransform.position, GetRandomRotation());
+        Vector3 spawnPosition = spawnAtOrigin ? Vector3.up * 0.5f : spawnTransform.position;
+        Instantiate(StackCube_Prefab, spawnPosition, GetRandomRotation());
     }
 
     Quaternion GetRandomRotation()
