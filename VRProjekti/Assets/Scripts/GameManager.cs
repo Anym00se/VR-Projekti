@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     private float reachTehLineTimer;
     private Image warningImage;
     private bool gameEnded = false;
+    public Material validMaterial;
+    public Material invalidMaterial;
+    public Renderer tehLineRenderer;
 
     // For anyone reading this:
     // "Teh Line" means "the line" but is a reference to Mubbly Tower.
@@ -59,12 +62,14 @@ public class GameManager : MonoBehaviour
             // Raise Teh Line if reached
             if (IsTehLineReached())
             {
+                SetValidMaterial();
                 tehLine.position += Vector3.up * tehLineRaiseSpeed * Time.deltaTime;
                 reachTehLineTimer = reachTehLineTimerDefault;
             }
             // Reduce timer if Teh Line not reached
             else
             {
+                SetInvalidMaterial();
                 reachTehLineTimer -= Time.deltaTime;
             }
 
@@ -122,5 +127,15 @@ public class GameManager : MonoBehaviour
     void UpdateWarningFillAmount()
     {
         warningImage.fillAmount = 1 - (reachTehLineTimer / reachTehLineTimerDefault);
+    }
+
+    void SetValidMaterial()
+    {
+        tehLineRenderer.material = validMaterial;
+    }
+
+    void SetInvalidMaterial()
+    {
+        tehLineRenderer.material = invalidMaterial;
     }
 }
