@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private float reachTehLineTimer;
     private GameObject warningImage;
     private TMP_Text scoreText;
+    private Transform timerBar;
     private bool gameEnded = false;
     public Material validMaterial;
     public Material invalidMaterial;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         tehLine = GameObject.FindGameObjectWithTag("TehLine").transform;
         warningImage = GameObject.FindGameObjectWithTag("WarningImage");
         scoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TMP_Text>();
+        timerBar = GameObject.FindGameObjectWithTag("TimerBar").transform;
         reachTehLineTimer = reachTehLineTimerDefault;
         tehLineStartHeight = tehLine.position.y;
     }
@@ -83,6 +85,8 @@ public class GameManager : MonoBehaviour
                 SetInvalidMaterial();
                 ShowWarning();
                 reachTehLineTimer -= Time.deltaTime;
+
+                UpdateTimerBarFillAmount();
             }
         }
 
@@ -158,5 +162,14 @@ public class GameManager : MonoBehaviour
     void HideWarning()
     {
         warningImage.SetActive(false);
+    }
+
+    void UpdateTimerBarFillAmount()
+    {
+        timerBar.localScale = new Vector3(
+            reachTehLineTimer / reachTehLineTimerDefault,
+            1f,
+            1f
+        );
     }
 }

@@ -13,6 +13,7 @@ TagManager:
   - Button
   - WarningImage
   - ScoreText
+  - TimerBar
   layers:
   - Default
   - TransparentFX
