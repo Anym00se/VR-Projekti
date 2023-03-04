@@ -8,6 +8,7 @@ public class PylonButton : MonoBehaviour
     [SerializeField] Transform button;
     private float buttonPressLength = 0.03f;
     private Vector3 buttonStartPosition;
+    public bool isRestartButton = false;
 
     void Start()
     {
@@ -18,6 +19,15 @@ public class PylonButton : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("VRController"))
         {
+            if (isRestartButton)
+            {
+                GameManager.instance.RestartGame();
+            }
+            else
+            {
+                cubeHolder.SpawnCube();
+            }
+
             PressButton();
         }
     }
@@ -32,8 +42,6 @@ public class PylonButton : MonoBehaviour
 
     void PressButton()
     {
-        cubeHolder.SpawnCube();
-
         button.transform.position = buttonStartPosition - Vector3.up * buttonPressLength;
     }
 

@@ -147,7 +147,6 @@ public class GameManager : MonoBehaviour
         gameEnded = true;
         HideWarning();
         ShowGameEndText();
-        Debug.Log("Teh Line not reached in time.\nGame ended.");
     }
 
     void SetValidMaterial()
@@ -189,7 +188,7 @@ public class GameManager : MonoBehaviour
         gameEndText.SetActive(false);
     }
 
-    void RestartGame()
+    public void RestartGame()
     {
         score = 0;
         gameEnded = false;
@@ -212,5 +211,8 @@ public class GameManager : MonoBehaviour
                 -0.49f,
                 lift.transform.position.z
             );
+
+        HideGameEndText();
+        HideWarning();
     }
 }
