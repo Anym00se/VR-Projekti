@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,11 +14,14 @@ public class GameManager : MonoBehaviour
     private float tehLineRaiseSpeed = 0.01f;
     private float reachTehLineTimerDefault = 10f;
     private float reachTehLineTimer;
-    private Image warningImage;
+    private GameObject warningImage;
+    private TMP_Text scoreText;
     private bool gameEnded = false;
     public Material validMaterial;
     public Material invalidMaterial;
     public Renderer tehLineRenderer;
+    private int score = 0;
+    private float tehLineStartHeight;
 
     // For anyone reading this:
     // "Teh Line" means "the line" but is a reference to Mubbly Tower.
@@ -41,8 +45,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         tehLine = GameObject.FindGameObjectWithTag("TehLine").transform;
+        warningImage = GameObject.FindGameObjectWithTag("WarningImage");
+        scoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TMP_Text>();
         reachTehLineTimer = reachTehLineTimerDefault;
-        warningImage = GameObject.FindGameObjectWithTag("WarningImage").GetComponent<Image>();
+        tehLineStartHeight = tehLine.position.y;
     }
 
     void Update()
@@ -64,17 +70,20 @@ public class GameManager : MonoBehaviour
             if (IsTehLineReached())
             {
                 SetValidMaterial();
+                HideWarning();
                 tehLine.position += Vector3.up * tehLineRaiseSpeed * Time.deltaTime;
                 reachTehLineTimer = reachTehLineTimerDefault;
+
+                score = Mathf.FloorToInt((tehLine.position.y - tehLineStartHeight) * 100f);
+                scoreText.text = "Score: " + score;
             }
             // Reduce timer if Teh Line not reached
             else
             {
                 SetInvalidMaterial();
+                ShowWarning();
                 reachTehLineTimer -= Time.deltaTime;
             }
-
-            UpdateWarningFillAmount();
         }
 
         // Restart game if pressed "Home"
@@ -131,11 +140,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Teh Line not reached in time.\nGame ended.");
     }
 
-    void UpdateWarningFillAmount()
-    {
-        warningImage.fillAmount = 1 - (reachTehLineTimer / reachTehLineTimerDefault);
-    }
-
     void SetValidMaterial()
     {
         tehLineRenderer.material = validMaterial;
@@ -144,5 +148,15 @@ public class GameManager : MonoBehaviour
     void SetInvalidMaterial()
     {
         tehLineRenderer.material = invalidMaterial;
+    }
+
+    void ShowWarning()
+    {
+        warningImage.SetActive(true);
+    }
+
+    void HideWarning()
+    {
+        warningImage.SetActive(false);
     }
 }

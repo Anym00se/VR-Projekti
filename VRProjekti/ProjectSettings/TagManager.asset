@@ -12,6 +12,7 @@ TagManager:
   - GameManager
   - Button
   - WarningImage
+  - ScoreText
   layers:
   - Default
   - TransparentFX
